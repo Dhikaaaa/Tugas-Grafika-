@@ -5,54 +5,30 @@ myCanvas.height = myCanvas.scrollHeight;
 
     function badan() {   
         c.beginPath(); 
-        c.moveTo(100,120); 
-        c.lineTo(250,120);
-        c.lineTo(250,400);
-        c.lineTo(100,400);
+        c.moveTo(100,160); 
+        c.lineTo(100,440);
+        c.lineTo(250,440);
+        c.lineTo(250,160);
         c.lineWidth = 4;
         c.lineCap = 'round';
         c.lineJoin = 'round';
         c.strokeStyle = 'black'; 
-        c.closePath();
         c.stroke();
     }
 
-    function tutup_awal(params) {   
-        c.beginPath(); 
-        c.moveTo(100,100); 
-        c.lineTo(150,100);
-        c.arc(175,100,25,1 * Math.PI,0 * Math.PI);
-        c.lineTo(250,100);
-        c.lineTo(250,120);
-        c.lineTo(100,120);
-        c.lineWidth = 4;
-        c.lineCap = 'round';
-        c.lineJoin = 'round';
-        c.strokeStyle = '#FF7D7D'; 
-        c.closePath();
-        c.stroke();
-    }
-var i = 1;
+   function tutup_awal(params) {  
+        c.fillStyle = '#FF7D7D' ;
+        c.fillRect(0,0,150,20);
+   }
+var i = 0;
 
     function draw() {
         // for (let i = 1; i < ; i++) {
-            c.clearRect(0,0,myCanvas.width,myCanvas.height);
             c.save();
+            c.clearRect(0,0,myCanvas.width,myCanvas.height);
+            c.translate(100,158);
             c.rotate(Math.PI /40 * i);
-            c.translate(5 * i,-25 * i);
-            c.beginPath(); 
-            c.moveTo(100,100); 
-            c.lineTo(150,100);
-            c.arc(175,100,25,1 * Math.PI,0 * Math.PI);
-            c.lineTo(250,100);
-            c.lineTo(250,120);
-            c.lineTo(100,120);
-            c.lineWidth = 4;
-            c.lineCap = 'round';
-            c.lineJoin = 'round';
-            c.strokeStyle = '#FF7D7D'; 
-            c.closePath();
-            c.stroke();
+            tutup_awal();
             c.restore();
         // }   
     }
@@ -61,11 +37,11 @@ badan();
 
 addEventListener("keydown", function(res){
     if(res.key == "ArrowUp"){
-        i += 1;
+        i -= 1;
         draw();
         badan();
     } else if(res.key == "ArrowDown"){
-        i -= 1;
+        i += 1;
         draw();
         badan();
     } else{
